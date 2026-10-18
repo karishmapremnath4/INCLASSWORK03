@@ -54,16 +54,25 @@ int main()
     }
     if (cur == nullptr)
     {
-        
         Node* fresh = new Node(key);
-        if (parent == nullptr)        root = fresh;        // the tree was empty
-        else if (key < parent->data)  parent->left = fresh;
-        else                          parent->right = fresh;
-        cout << key << " was not found, inserted as the "
-             << (key < parent->data ? "left" : "right")
-             << " child of " << parent->data << endl;
+        if (parent == nullptr)
+        {
+            root = fresh;
+            cout << key << " was not found, inserted as the new root" << endl;
+        }
+        else if (key < parent->data)
+        {
+            parent->left = fresh;
+            cout << key << " was not found, inserted as the left child of "
+                 << parent->data << endl;
+        }
+        else
+        {
+            parent->right = fresh;
+            cout << key << " was not found, inserted as the right child of "
+                 << parent->data << endl;
+        }
     }
-    
 
     cout << "After:  ";
     printInorder(root);
